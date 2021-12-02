@@ -1,6 +1,5 @@
 package main.java.days;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class Day1 implements Day {
     private List<Integer> allInts;
 
     @Override
-    public int part1() throws FileNotFoundException {
+    public int part1() {
         this.increased = 0;
         makeList();
 
@@ -36,8 +35,10 @@ public class Day1 implements Day {
         return increased;
     }
 
+
+
     @Override
-    public int part2() throws FileNotFoundException {
+    public int part2() {
         this.increased = 0;
         makeList();
 
@@ -54,13 +55,15 @@ public class Day1 implements Day {
         return increased;
     }
 
-    private void makeScanner() throws FileNotFoundException {
-        //Scanner input = new Scanner(new FileReader("/Users/wardgrosemans/Desktop/AOC_2021/day1/src/input.txt"));
-        Scanner input = new Scanner(new FileReader("src/main/Resources/inputDay1.txt"));
-        this.input = input;
+    private void makeScanner() {
+        try {
+            //Scanner input = new Scanner(new FileReader("/Users/wardgrosemans/Desktop/AOC_2021/day1/src/input.txt"));
+            //Scanner input = new Scanner(new FileReader("src/main/Resources/inputDay1.txt"));
+            this.input = new Scanner(new FileReader("src/main/Resources/inputDay1.txt"));
+        } catch(Exception e) { throw new RuntimeException(e);}
     }
 
-    private void makeList() throws FileNotFoundException {
+    private void makeList() {
         makeScanner();
         this.allInts = new ArrayList<>();
         while (input.hasNextInt()) {

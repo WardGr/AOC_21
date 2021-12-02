@@ -2,25 +2,27 @@ package main;
 
 import main.java.days.Day;
 import main.java.days.Day1;
+import main.java.days.Day2;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("AoC 2021");
         Day day1 = new Day1();
+        Day day2 = new Day2();
 
-        ArrayList<Day> days = new ArrayList<Day>();
+        ArrayList<Day> days = new ArrayList<>();
         days.add(day1);
+        days.add(day2);
 
         for (Day day : days) {
             System.out.println("Part 1:");
-            System.out.println("Amt of increases: " + day.part1());
+            System.out.println("Answer: " + day.part1());
 
             System.out.println("Part 2:");
-            System.out.println("Amt of increases: " + day.part2());
+            System.out.println("Answer: " + day.part2());
         }
     }
 }
