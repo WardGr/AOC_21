@@ -5,17 +5,19 @@ import main.java.days.Day1;
 import main.java.days.Day2;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
         System.out.println("AoC 2021");
-        Day day1 = new Day1();
-        Day day2 = new Day2();
+        Day day1 = new Day1("src/main/resources/inputDay1.txt");
+        Day day2 = new Day2("src/main/resources/inputDay2.txt");
 
-        ArrayList<Day> days = new ArrayList<>();
-        days.add(day1);
-        days.add(day2);
+        ArrayList<Day> days = new ArrayList<>() {{
+                    add(day1);
+                    add(day2);
+        }};
 
         for (Day day : days) {
             System.out.println("Part 1:");

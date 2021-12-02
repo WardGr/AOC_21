@@ -1,6 +1,12 @@
 package main.java.days;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Day {
-    int part1();
-    int part2();
+    Object part1();
+    Object part2();
 }

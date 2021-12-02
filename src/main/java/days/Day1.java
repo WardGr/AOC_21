@@ -10,18 +10,23 @@ public class Day1 implements Day {
     private int increased;
     private Scanner input;
     private List<Integer> allInts;
+    private String file;
+
+    public Day1(String file) {
+        this.file = file;
+    }
 
     @Override
-    public int part1() {
+    public Object part1() {
         this.increased = 0;
         makeList();
 
         for (int i = 0; i < allInts.size() - 1; i++) {
-            // TODO increased = allInts.get(i) < allInts.get(i + 1) ? increased : increased++;
-            int curr = allInts.get(i);
+            increased = allInts.get(i) > allInts.get(i + 1) ? increased : (increased + 1);
+            /*int curr = allInts.get(i);
             int next = allInts.get(i+1);
             if ((curr < next))
-                increased++;
+                increased++;*/
         }
         /*int prev = input.nextInt(), curr = input.nextInt();
         while (input.hasNextInt()) {
@@ -35,10 +40,8 @@ public class Day1 implements Day {
         return increased;
     }
 
-
-
     @Override
-    public int part2() {
+    public Object part2() {
         this.increased = 0;
         makeList();
 
@@ -57,9 +60,8 @@ public class Day1 implements Day {
 
     private void makeScanner() {
         try {
-            //Scanner input = new Scanner(new FileReader("/Users/wardgrosemans/Desktop/AOC_2021/day1/src/input.txt"));
-            //Scanner input = new Scanner(new FileReader("src/main/Resources/inputDay1.txt"));
-            this.input = new Scanner(new FileReader("src/main/Resources/inputDay1.txt"));
+
+            this.input = new Scanner(new FileReader(file));
         } catch(Exception e) { throw new RuntimeException(e);}
     }
 
