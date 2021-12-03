@@ -3,6 +3,7 @@ package main;
 import main.java.days.Day;
 import main.java.days.Day1;
 import main.java.days.Day2;
+import main.java.days.Day3;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,10 +14,12 @@ public class App {
         System.out.println("AoC 2021");
         Day day1 = new Day1("src/main/resources/inputDay1.txt");
         Day day2 = new Day2("src/main/resources/inputDay2.txt");
+        Day day3 = new Day3("src/main/resources/inputDay3.txt");
 
         ArrayList<Day> days = new ArrayList<>() {{
                     add(day1);
                     add(day2);
+                    add(day3);
         }};
 
         for (Day day : days) {
