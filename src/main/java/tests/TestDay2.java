@@ -1,7 +1,6 @@
-package main.tests;
+package main.java.tests;
 
 import main.java.days.Day;
-import main.java.days.Day1;
 import main.java.days.Day2;
 import org.junit.Test;
 import org.junit.Assert;
