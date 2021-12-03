@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.Assert;
 
 public class testDay3 {
-    Day day = new Day3("src/main/resources/day3.txt");
+    Day day = new Day3("resources/day3.txt");
 
     @Test
     public void test1() {
@@ -20,7 +20,7 @@ public class testDay3 {
 
     @Test
     public void answers() {
-        day = new Day3("src/main/resources/inputDay3.txt");
+        day = new Day3("resources/inputDay3.txt");
         Assert.assertEquals(2250414, day.part1());
         Assert.assertEquals(6085575, day.part2());
     }

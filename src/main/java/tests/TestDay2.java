@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.Assert;
 
 public class TestDay2 {
-    Day day = new Day2("src/main/resources/day2.txt");
+    Day day = new Day2("resources/day2.txt");
 
     @Test
     public void TestCase1() {

@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) {
         System.out.println("AoC 2021");
-        Day day1 = new Day1("src/main/resources/inputDay1.txt");
-        Day day2 = new Day2("src/main/resources/inputDay2.txt");
-        Day day3 = new Day3("src/main/resources/inputDay3.txt");
+        Day day1 = new Day1("resources/inputDay1.txt");
+        Day day2 = new Day2("resources/inputDay2.txt");
+        Day day3 = new Day3("resources/inputDay3.txt");
 
         ArrayList<Day> days = new ArrayList<>() {{
                     add(day1);
