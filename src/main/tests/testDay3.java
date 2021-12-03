@@ -20,6 +20,13 @@ public class testDay3 {
         Assert.assertEquals((day.part2()), 230);
     }
 
+    @Test
+    public void answers() {
+        day = new Day3("src/main/resources/inputDay3.txt");
+        Assert.assertEquals(2250414, day.part1());
+        Assert.assertEquals(6085575, day.part2());
+    }
+
     /*@Test
     public void stringTest() {
         String[] list = new String[];

@@ -8,24 +8,17 @@ import java.util.List;
 
 public class Day3 implements Day {
 
-    private int[] posBitCount;
-    private int[] negBitCount;
     private String gammaRate = "";
     private String epsilonRate = "";
-
     private String file;
 
     public Day3 (String file) {
         this.file = file;
     }
 
-
     @Override
     public Object part1() {
         List<String> lines = Utils.fileToList(file);
-        int length = lines.get(0).length();
-        posBitCount = new int[length];
-        negBitCount = new int[length];
         mostFrequent(lines);
         return calculate();
     }
@@ -39,24 +32,17 @@ public class Day3 implements Day {
     }
 
     private void mostFrequent(List<String> lines) {
-        for (String line: lines) {
-            String[] splitted = line.split("");
-            int i = 0;
-            for (String letter : splitted) {
-                if (letter.equals("1"))
-                    posBitCount[i]++;
-                else
-                    negBitCount[i]++;
-                i++;
-            }
-        }
-        for (int i = 0; i < posBitCount.length; i++) {
-            if (posBitCount[i] > negBitCount[i]) {
-                gammaRate += "1";
-                epsilonRate += "0";
+        for (int i = 0; i < lines.get(0).length(); i++) {
+            int finalI = i;
+            int ones = (int) lines.stream().filter(line -> line.charAt(finalI) == '1').count();
+            int zeros = lines.size() - ones;
+
+            if (ones > zeros) {
+                gammaRate += '1';
+                epsilonRate += '0';
             } else {
-                gammaRate += "0";
-                epsilonRate += "1";
+                gammaRate += '0';
+                epsilonRate += '1';
             }
         }
     }
@@ -95,36 +81,28 @@ public class Day3 implements Day {
 
     private int[] count(List<String> lines, int idx) {
         int[] count = new int[2];
-        for (String line: lines) {
-            String[] splitted = line.split("");
-            if (splitted[idx].equals("1"))
-                count[1]++;
-            else
-                count[0]++;
-        }
+        count[0] = (int) lines.stream().filter(line -> line.charAt(idx) == '0').count();
+        count[1] = (int) lines.stream().filter(line -> line.charAt(idx) == '1').count();
         return count;
     }
 
     private LinkedList<String> addOnes(LinkedList<String> adaptedLines, List<String> lines, int idx) {
-        for (String line : lines) {
-            String[] splitted = line.split("");
-            if (splitted[idx].equals("1"))
+        lines.stream().forEach(line -> {
+            if (line.charAt(idx) == '1')
                 adaptedLines.add(line);
-        }
+        });
         return adaptedLines;
     }
 
     private LinkedList<String> addZeros(LinkedList<String> adaptedLines, List<String> lines, int idx) {
-        for (String line : lines) {
-            String[] splitted = line.split("");
-            if (splitted[idx].equals("0"))
+        lines.stream().forEach(line -> {
+            if (line.charAt(idx) == '0')
                 adaptedLines.add(line);
-        }
+        });
         return adaptedLines;
     }
 
     private int calculate() {
-
         return turnToInt(gammaRate).intValue() * turnToInt(epsilonRate).intValue();
     }
 
