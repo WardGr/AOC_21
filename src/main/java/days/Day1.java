@@ -23,20 +23,7 @@ public class Day1 implements Day {
 
         for (int i = 0; i < allInts.size() - 1; i++) {
             increased = allInts.get(i) > allInts.get(i + 1) ? increased : (increased + 1);
-            /*int curr = allInts.get(i);
-            int next = allInts.get(i+1);
-            if ((curr < next))
-                increased++;*/
         }
-        /*int prev = input.nextInt(), curr = input.nextInt();
-        while (input.hasNextInt()) {
-            if ((curr > prev))
-                increased++;
-            prev = curr;
-            curr = input.nextInt();
-        }
-        if ((curr > prev))
-            increased++;*/
         return increased;
     }
 

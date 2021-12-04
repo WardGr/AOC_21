@@ -1,11 +1,8 @@
 package main.java.days;
 
-import main.java.utilities.Utils.Utils;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 public class Day2 implements Day {
 
