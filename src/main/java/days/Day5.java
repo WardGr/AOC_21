@@ -1,7 +1,6 @@
 package main.java.days;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,8 +9,8 @@ import java.util.Objects;
 
 public class Day5 implements Day {
 
-    private String file;
-    private Map<NonEqualPoint, NonEqualPoint> points = new HashMap<>();
+    private final String file;
+    private final Map<NonEqualPoint, NonEqualPoint> points = new HashMap<>();
     private Map<Point, Integer> mappings = new HashMap();
     private int result;
 
@@ -88,11 +87,10 @@ public class Day5 implements Day {
                 NonEqualPoint p2 = new NonEqualPoint(Integer.parseInt(sndLineParts[0]), Integer.parseInt(sndLineParts[1]));
                 points.put(p1, p2);
             }
-        } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException();
         } catch (IOException e) {
             throw new IllegalArgumentException();
-        } }
+        }
+    }
 
     public void calcResult() {
         result = (int) mappings.entrySet().stream().filter(entry -> entry.getValue() > 1).count();
@@ -100,7 +98,7 @@ public class Day5 implements Day {
 
     // Class so for example 0,9->2,9 and 0,9->5,9 are both mapped on points Map
     // Otherwise only the first one in the list is added
-    public class NonEqualPoint {
+    public static class NonEqualPoint {
 
         public int x;
         public int y;
@@ -111,7 +109,7 @@ public class Day5 implements Day {
         }
     }
 
-    public class Point {
+    public static class Point {
 
         public int x;
         public int y;
