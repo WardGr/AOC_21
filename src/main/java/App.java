@@ -10,12 +10,14 @@ public class App {
         Day day2 = new Day2("resources/inputDay2.txt");
         Day day3 = new Day3("resources/inputDay3.txt");
         Day day4 = new Day4("resources/inputDay4.txt");
+        Day day5 = new Day5("resources/inputDay5.txt");
 
         ArrayList<Day> days = new ArrayList<>() {{
                     add(day1);
                     add(day2);
                     add(day3);
                     add(day4);
+                    add(day5);
         }};
 
         int i = 1;
