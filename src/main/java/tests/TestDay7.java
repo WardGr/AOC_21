@@ -1,13 +1,13 @@
 package main.java.tests;
 
 import main.java.days.Day;
-import main.java.days.Day5;
-import main.java.days.Day7;
+import main.java.days.Day7List;
+import main.java.days.Day7Map;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class TestDay7 {
-    Day day = new Day7("resources/day7.txt");
+    Day day = new Day7Map("resources/day7.txt");
 
     @Test
     public void test1() {
@@ -21,6 +21,15 @@ public class TestDay7 {
 
     @Test
     public void inputTest() {
-        day = new Day7("resources/inputDay7.txt");
+        day = new Day7List("resources/inputDay7.txt");
+        long start = System.nanoTime();
+        day.part1();
+        day.part2();
+        System.out.println("List implementation took: \n" + (System.nanoTime() - start) + " ns!");
+
+        day = new Day7Map("resources/inputDay7.txt");
+        day.part1();
+        day.part2();
+        System.out.println("Map implementation took: \n" + (System.nanoTime() - start) + " ns!");
     }
 }

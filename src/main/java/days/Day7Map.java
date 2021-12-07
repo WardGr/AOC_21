@@ -7,17 +7,19 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Day7 implements Day {
-    // Extremely inefficient, might fix later
+import static java.util.stream.Collectors.reducing;
+
+public class Day7Map implements Day {
 
     private String file;
-    private Map<Integer, Long> positions = new HashMap<>();
-    private Map<Integer, Long> costs = new HashMap<>();
+    private Map<Integer, Integer> positions = new HashMap<>();
+    private Map<Integer, Integer> costs = new HashMap<>();
     private int maxVal = 0;
 
-    public Day7(String file) {
+    public Day7Map(String file) {
         this.file = file;
     }
 
@@ -37,32 +39,27 @@ public class Day7 implements Day {
 
     public void calculateP2() {
         costs = new HashMap<>();
-        long cost, currVal;
+        int cost, currVal;
         for (int pos = 0; pos < maxVal; pos++) {
             cost = 0;
-            for (Map.Entry<Integer, Long> crab : positions.entrySet()) {
+            for (Map.Entry<Integer, Integer> crab : positions.entrySet()) {
                 currVal = 0;
-                for (int i = 1; i <= Math.abs(pos - crab.getKey()); i++)
-                    currVal += i;
-                cost += (currVal * crab.getValue());
+                int steps = Math.abs(pos - crab.getKey());
+                currVal += ((steps * (steps + 1)) / 2);
+                cost += currVal * crab.getValue();
+                //for (int i = 1; i <= Math.abs(pos - crab.getKey()); i++)
+                //    currVal += i;
+                //cost += (currVal * crab.getValue());
             }
             costs.put(pos, cost);
         }
     }
 
     public void calculateP1() {
-        long cost;
-        /*for(Map.Entry<Integer, Long> i : positions.entrySet()) {
-            int j = i.getKey();
-            cost = 0;
-            for (Map.Entry<Integer, Long> crab : positions.entrySet()) {
-                cost += Math.abs(j - crab.getKey()) * crab.getValue();
-            }
-            costs.put(j, cost);
-        }*/
+        int cost;
         for (int pos = 0; pos < maxVal; pos++) {
             cost = 0;
-            for (Map.Entry<Integer, Long> crab : positions.entrySet()) {
+            for (Map.Entry<Integer, Integer> crab : positions.entrySet()) {
                 cost += Math.abs(pos - crab.getKey()) * crab.getValue();
             }
             costs.put(pos, cost);
@@ -77,7 +74,11 @@ public class Day7 implements Day {
         try (BufferedReader br = new BufferedReader((new FileReader(file)))) {
             String line = br.readLine();
             String[] lineSplitted = line.trim().split(",");
-            positions = Arrays.stream(lineSplitted).collect(Collectors.groupingBy(Integer::parseInt, Collectors.counting()));
+            // Credits aan Jonas Couwberghs voor de prachtige stream!
+            positions = Arrays.stream(line.split(","))
+                    .map(Integer::valueOf)
+                    .collect(Collectors.groupingBy(Function.identity(), reducing(0, e -> 1, Integer::sum)));
+            //positions = Arrays.stream(lineSplitted).collect(Collectors.groupingBy(Integer::parseInt, Collectors.counting()));
             // Calculate the max horizontal value, so that we can easily determine all points to be checked
             Arrays.stream(lineSplitted).forEach(val -> {
                 if (Integer.parseInt(val) > maxVal)
