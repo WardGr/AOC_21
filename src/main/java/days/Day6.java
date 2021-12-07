@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class Day6 implements Day {
 
-    // This class was made because Day6.java is very inefficient. Part2 did not work because of not enough memory.
+    // This class was made because Day6.java is very inefficient. Part2 did not work due to lack of memory efficiency.
 
     private Map<Integer, Long> fish = new HashMap<>();
     private long answer;
