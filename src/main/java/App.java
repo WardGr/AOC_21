@@ -15,6 +15,9 @@ public class App {
         Day day7List = new Day7List("resources/inputDay7.txt");
         //Day day7Map = new Day7Map("resources/inputDay7.txt");
         Day day8 = new Day8("resources/inputDay8.txt");
+        Day day9 = new Day9("resources/inputDay9.txt");
+        Day day10 = new Day10("resources/inputDay10.txt");
+        Day newDay10 = new NewDay10("resources/inputDay10.txt");
 
         ArrayList<Day> days = new ArrayList<>() {{
                     add(day1);
@@ -26,6 +29,9 @@ public class App {
                     add(day7List);
                     //add(day7Map);
                     add(day8);
+                    add(day9);
+                    //add(day10);
+                    add(newDay10);
         }};
 
         int i = 1;
