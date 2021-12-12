@@ -19,7 +19,7 @@ public class App {
         Day day10 = new Day10("resources/inputDay10.txt");
         Day newDay10 = new NewDay10("resources/inputDay10.txt");
         Day day11 = new Day11("resources/inputDay11.txt");
-
+        Day day12 = new Day12("resources/inputDay12.txt");
         ArrayList<Day> days = new ArrayList<>() {{
                     add(day1);
                     add(day2);
@@ -34,6 +34,7 @@ public class App {
                     //add(day10);
                     add(newDay10);
                     add(day11);
+                    add(day12);
         }};
 
         int i = 1;
